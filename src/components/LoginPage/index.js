@@ -1,5 +1,4 @@
-import React, { useState} from "react";
-import { useEffect } from "react";
+import React, { useState,useEffect} from "react";
 import { useForm } from "react-hook-form";
 import { Link ,useNavigate} from "react-router-dom";
 import Cookies from 'js-cookie';
@@ -12,6 +11,15 @@ function Login() {
   const { register, handleSubmit } = useForm();
   const [errorMsg, setErrorMsg] = useState(""); 
   const navigate=useNavigate();
+
+  useEffect(() => {
+    const userToken = Cookies.get('user_jwt_token');
+    const recruiterToken = Cookies.get('recruiter_jwt_token');
+
+    if (userToken || recruiterToken) {
+      navigate("/home", { replace: true });
+    }
+  }, [navigate]);
 
 
   const onSubmit = async  (dat) => {
@@ -42,7 +50,7 @@ function Login() {
           console.log(data);
           localStorage.setItem('userInfo', JSON.stringify(data.user));
           Cookies.set('user_jwt_token', data.token, { expires: 30 });
-          navigate("/",{replace:true})
+          navigate("/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){
@@ -86,7 +94,7 @@ function Login() {
           // console.log(data);
           localStorage.setItem('recruiterInfo', JSON.stringify(data.recruiter));
           Cookies.set('recruiter_jwt_token', data.token, { expires: 30 });
-          navigate("/",{replace:true})
+          navigate("/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){

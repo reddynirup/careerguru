@@ -86,7 +86,25 @@ recruiterApp.post("/login", expressAsyncHandler(async (request, response) => {
   }
 }));
 
+// Update job details
+recruiterApp.put("/updateJobDetails/:jobId", expressAsyncHandler(async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
+    // Find the job by ID
+    const job = await Job.findByIdAndUpdate(jobId, req.body, { new: true });
 
+    // If job doesn't exist, return a 404 response
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    // Send the updated job details in the response
+    res.status(200).json(job);
+  } catch (error) {
+    console.error("Error updating job details:", error);
+    res.status(500).json({ message: "Internal server error" });
+  }
+}));
 
 //PROTECTED APIS
 recruiterApp.post("/postjob",expressAsyncHandler(async (request, response) => {

@@ -1,11 +1,38 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import UserNavbar from "../UserNavbar";
 import { useForm } from "react-hook-form";
 import "./index.css";
 
 function EditUserDetails() {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit, reset, setValue } = useForm();
   const [notification, setNotification] = useState(null);
+
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        const userId = userInfo ? userInfo.userId : null;
+        const url = `http://localhost:5000/user-api/user-details/${userId}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // Set form values with user details
+        if (data && data.user) {
+          const { username, email, phoneNumber, address, skills, educationDetails } = data.user;
+          setValue("fullName", username);
+          setValue("email", email);
+          setValue("phoneNumber", phoneNumber);
+          setValue("address", address);
+          setValue("skills", skills);
+          setValue("educationDetails", educationDetails);
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    fetchUserDetails();
+  }, [setValue]);
 
   const handleFormSubmit = async (data) => {
     const updateDetails = {

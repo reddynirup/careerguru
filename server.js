@@ -14,7 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use("/user-api", userApis);
 app.use("/recruiter-api", recruiterApis);
-app.use(express.static(path.join(__dirname,"./build")));
+// app.use(express.static(path.join(__dirname,"./build")));
 
 app.listen(PORT, () => {
     console.log("server running on http://localhost:5000/");

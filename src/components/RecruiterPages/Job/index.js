@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./index.css";
+import EditJobModal from "../EditJobModal";
 
-function Job({ jobDetails, deleteJobById }) {
+function Job({ jobDetails, deleteJobById, updateJobById }) {
   const {
     _id,
     companyName,
@@ -10,16 +11,27 @@ function Job({ jobDetails, deleteJobById }) {
     positionName,
     jobType,
     aboutJob,
-    ctc,
     lastDate,
-    minQualifications,
-    responsibilities,
     postedOn,
   } = jobDetails;
+  // ctc,
+  // minQualifications,
+  // responsibilities,
+
+  const [showModal, setShowModal] = useState(false);
 
   const deleteJob = async () => {
     deleteJobById(_id);
   };
+
+  const openModal = () => {
+    setShowModal(true);
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
+
 
   return (
     <div className="my-job-card">
@@ -47,11 +59,17 @@ function Job({ jobDetails, deleteJobById }) {
         </div>
       </div>
       <div className="my-action-buttons">
-        <button className="my-edit-button">Edit</button>
+        <button className="my-edit-button" onClick={openModal}>Edit</button>
         <button className="my-delete-button" onClick={deleteJob}>
           Delete
         </button>
       </div>
+      {showModal && (
+        <EditJobModal
+          jobDetails={jobDetails}
+          closeModal={closeModal}
+        />
+      )}
     </div>
   );
 }

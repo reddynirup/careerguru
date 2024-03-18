@@ -21,7 +21,7 @@ function Navbar(){
         <div className="recruiter-nav-bar-container">
             <div className="desktop-nav">
                 <div className="company-logo-container">
-                    <Link to={"/"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
+                    <Link to={"/home"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
                 </div>
                 <div className="recruiter-options-container">
                     <div className="large-screen-options">

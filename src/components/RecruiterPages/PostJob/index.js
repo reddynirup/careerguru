@@ -62,38 +62,39 @@ function PostJob() {
         <h2>Post a Job</h2>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="form-group">
-            <label htmlFor="position">Position Name</label>
+            <label htmlFor="positionName">Position Name</label>
             <input
               type="text"
-              id="position"
+              id="positionName"
               {...register('positionName', { required: '*Position Name is required' })}
               placeholder="Eg: Software Engineer II"
             />
-            {errors.position && <span className="error">{errors.position.message}</span>}
+            {errors.positionName && <span className="error">{errors.positionName.message}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="type">Job Type</label>
+            <label htmlFor="jobType">Job Type</label>
             <select
-              id="type"
+              id="jobType"
               {...register('jobType', { required: '*Job Type is required' })}
             >
               <option value="">Select Job Type</option>
               <option value="Full Time">Full Time</option>
               <option value="Internship">Internship</option>
             </select>
-            {errors.type && <span className="error">{errors.type.message}</span>}
+            {errors.jobType && <span className="error">{errors.jobType.message}</span>}
           </div>
 
           <div className="form-group">
-            <label htmlFor="date">Last Date to Apply</label>
+            <label htmlFor="lastDate">Last Date to Apply</label>
             <input
               type="date"
-              id="date"
+              id="lastDate"
               {...register('lastDate', { required: '*Last Date to Apply is required' })}
             />
-            {errors.date && <span className="error">{errors.date.message}</span>}
+            {errors.lastDate && <span className="error">{errors.lastDate.message}</span>}
           </div>
+
 
           <div className="form-group">
             <label htmlFor="minQualifications">Minimum Qualifications</label>
@@ -138,7 +139,7 @@ function PostJob() {
 
           <div className="form-buttons">
             <button type="submit" className="btn btn-primary">Post Job</button>
-            <Link to="/" className="btn btn-secondary">Cancel</Link>
+            <Link to="/home" className="btn btn-secondary">Cancel</Link>
           </div>
         </form>
       </div>

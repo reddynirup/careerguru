@@ -1,6 +1,7 @@
 const express=require("express");
 const bcryptjs = require("bcryptjs");
 const jwt = require("jsonwebtoken"); 
+const mongoose=require("mongoose");
 const expressAsyncHandler = require("express-async-handler");
 const  userApp=express.Router();
 
@@ -69,13 +70,38 @@ userApp.post("/login",expressAsyncHandler(async (request, response) => {
         userId: user._id,
         username: user.username,
         email: user.email,
-        userType: "JobSeeker",
+        userType: "JobSeeker"
       } });
     } catch (error) {
       response.status(500).send({ message: "Internal Server Error" });
     }
   })
 );
+
+userApp.get("/user-details/:userId", expressAsyncHandler(async (request, response) => {
+  try {
+    const { userId } = request.params;
+
+    // Validate if userId exists
+    if (!userId || !mongoose.Types.ObjectId.isValid(userId)) {
+      return response.status(400).send({ message: "Invalid userId" });
+    }
+
+    // Find the user by userId
+    const user = await User.findById(userId);
+
+    // Check if the user was found
+    if (!user) {
+      return response.status(404).send({ message: "User not found" });
+    }
+
+    // Send the user details in the response
+    response.status(200).send({ user });
+  } catch (error) {
+    console.error('Error fetching user details:', error);
+    response.status(500).send({ message: "Internal Server Error" });
+  }
+}));
 
 
 //PROTECTED APIS

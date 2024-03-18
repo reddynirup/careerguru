@@ -19,26 +19,26 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          {/* RECRUITER PROTECTED ROUTES */}
+          {/* PUBLIC ROUTES */}
+          <Route exact path="/login" element={<UserLogin/>} />
+          <Route exact path="/register" element={<UserRegister/>} />
+          <Route path="*" element={<PageNotFound/>} />
           {/* USER PROTECTED ROUTES */}
           <Route element={<UserProtectedRoutes/>}>
-            <Route exact path="/" element={<UserHome/>} />
+            <Route exact path="/home" element={<UserHome/>} />
             <Route exact path="/alljobs" element={<AllJobs/>} />
             <Route exact path="/appliedjobs" element={<AppliedJobs/>} />
             <Route exact path="/updateUserProfile" element={<EditUserDetails/>} />
           </Route>
+          {/* RECRUITER PROTECTED ROUTES */}
           <Route element={<RecruiterProtectedRoutes/>}>
-            <Route exact path="/" element={<RecruiterHome/>} />
+            <Route exact path="/home" element={<RecruiterHome/>} />
             <Route exact path="/myjobs" element={<MyJobs/>} />
             <Route exact path="/postjob" element={<PostJob/>} />
             <Route exact path="/applications/:jobId" element={<Applications/>} />
           </Route>
 
           
-          {/* PUBLIC ROUTES */}
-          <Route exact path="/login" element={<UserLogin/>} />
-          <Route exact path="/register" element={<UserRegister/>} />
-          <Route path="*" element={<PageNotFound/>} />
         </Routes>
       </BrowserRouter>  
     </>
