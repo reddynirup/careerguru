@@ -13,8 +13,8 @@ const PageNotFound = () => (
             Please go back to the home page
         </p>
         {/* if page not found this link is to navigate to home page */}
-        <Link to='/home' replace={true}>
-            <button className='home-page-btn'>Home Page</button>
+        <Link to="/home" replace={true}>
+            <button className='not-found-home-page-btn'>Home Page</button>
         </Link>
     </div>
 )

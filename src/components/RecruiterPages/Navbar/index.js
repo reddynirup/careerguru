@@ -21,13 +21,13 @@ function Navbar(){
         <div className="recruiter-nav-bar-container">
             <div className="desktop-nav">
                 <div className="company-logo-container">
-                    <Link to={"/home"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
+                    <Link to={"/recruiter/home"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
                 </div>
                 <div className="recruiter-options-container">
                     <div className="large-screen-options">
                         <ul className="options-container">
-                            <Link to={"/myjobs"}><li className="option">myJobs</li></Link>
-                            <Link to={"/postjob"}><li className="option">postJob</li></Link>
+                            <Link to={"/recruiter/myjobs"}><li className="option">myJobs</li></Link>
+                            <Link to={"/recruiter/postjob"}><li className="option">postJob</li></Link>
                         </ul>
                         <button type="button" className="logout-button" onClick={onClickLogOut}>Logout</button>
                     </div>
@@ -38,8 +38,8 @@ function Navbar(){
             </div>
             {menuOpen && <div className="mobile-options">
                 <ul className="options-container">
-                    <Link to={"/myjobs"}><li className="option">myJobs</li></Link>
-                    <Link to={"/postjob"}><li className="option">postJob</li></Link>
+                    <Link to={"/recruiter/myjobs"}><li className="option">myJobs</li></Link>
+                    <Link to={"/recruiter/postjob"}><li className="option">postJob</li></Link>
                 </ul>
                 <button type="button" className="logout-button" onClick={onClickLogOut}>Logout</button>
             </div>}

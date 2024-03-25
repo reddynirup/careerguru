@@ -16,8 +16,11 @@ function Login() {
     const userToken = Cookies.get('user_jwt_token');
     const recruiterToken = Cookies.get('recruiter_jwt_token');
 
-    if (userToken || recruiterToken) {
-      navigate("/home", { replace: true });
+    if (userToken ) {
+      navigate("/user/home", { replace: true });
+    }
+    if (recruiterToken) {
+      navigate("/recruiter/home", { replace: true });
     }
   }, [navigate]);
 
@@ -50,7 +53,7 @@ function Login() {
           console.log(data);
           localStorage.setItem('userInfo', JSON.stringify(data.user));
           Cookies.set('user_jwt_token', data.token, { expires: 30 });
-          navigate("/home",{replace:true})
+          navigate("/user/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){
@@ -94,7 +97,7 @@ function Login() {
           // console.log(data);
           localStorage.setItem('recruiterInfo', JSON.stringify(data.recruiter));
           Cookies.set('recruiter_jwt_token', data.token, { expires: 30 });
-          navigate("/home",{replace:true})
+          navigate("/recruiter/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){

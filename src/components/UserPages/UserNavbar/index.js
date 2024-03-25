@@ -21,14 +21,14 @@ function UserNavbar(){
         <div className="user-nav-bar-container">
             <div className="desktop-nav">
                 <div className="company-logo-container">
-                    <Link to={"/home"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
+                    <Link to={"/user/home"}><img alt="company-logo" src={Logo}  className="company-logo"/></Link>
                 </div>
                 <div className="user-options-container">
                     <div className="large-screen-options">
                         <ul className="options-container">
-                            <Link to={"/alljobs"}><li className="option">AllJobs</li></Link>
-                            <Link to={"/appliedjobs"}><li className="option">Applied</li></Link>
-                            <Link to={"/updateUserProfile"}><li className="option">updateProfile</li></Link>
+                            <Link to={"/user/alljobs"}><li className="option">AllJobs</li></Link>
+                            <Link to={"/user/appliedjobs"}><li className="option">Applied</li></Link>
+                            <Link to={"/user/updateUserProfile"}><li className="option">updateProfile</li></Link>
                         </ul>
                         <button type="button" className="logout-button" onClick={onClickLogOut}>Logout</button>
                     </div>
@@ -39,9 +39,9 @@ function UserNavbar(){
             </div>
             {menuOpen && <div className="mobile-options">
                 <ul className="options-container">
-                    <Link to={"/alljobs"}><li className="option">AllJobs</li></Link>
-                    <Link to={"/appliedjobs"}><li className="option">Applied</li></Link>
-                    <Link to={"/updateUserProfile"}><li className="option">updateProfile</li></Link>
+                    <Link to={"/user/alljobs"}><li className="option">AllJobs</li></Link>
+                    <Link to={"/user/appliedjobs"}><li className="option">Applied</li></Link>
+                    <Link to={"/user/updateUserProfile"}><li className="option">updateProfile</li></Link>
                 </ul>
                 <button type="button" className="logout-button" onClick={onClickLogOut}>Logout</button>
             </div>}

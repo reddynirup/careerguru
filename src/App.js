@@ -18,28 +18,28 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <Routes>
-          {/* PUBLIC ROUTES */}
-          <Route exact path="/login" element={<UserLogin/>} />
-          <Route exact path="/register" element={<UserRegister/>} />
-          <Route path="*" element={<PageNotFound/>} />
-          {/* USER PROTECTED ROUTES */}
-          <Route element={<UserProtectedRoutes/>}>
-            <Route exact path="/home" element={<UserHome/>} />
-            <Route exact path="/alljobs" element={<AllJobs/>} />
-            <Route exact path="/appliedjobs" element={<AppliedJobs/>} />
-            <Route exact path="/updateUserProfile" element={<EditUserDetails/>} />
-          </Route>
-          {/* RECRUITER PROTECTED ROUTES */}
-          <Route element={<RecruiterProtectedRoutes/>}>
-            <Route exact path="/home" element={<RecruiterHome/>} />
-            <Route exact path="/myjobs" element={<MyJobs/>} />
-            <Route exact path="/postjob" element={<PostJob/>} />
-            <Route exact path="/applications/:jobId" element={<Applications/>} />
-          </Route>
+      <Routes>
+        {/* PUBLIC ROUTES */}
+        <Route exact path="/login" element={<UserLogin />} />
+        <Route exact path="/register" element={<UserRegister />} />
+        {/* RECRUITER PROTECTED ROUTES */}
+        <Route path="/recruiter/*" element={<RecruiterProtectedRoutes />}>
+          <Route exact path="home" element={<RecruiterHome />} />
+          <Route exact path="myjobs" element={<MyJobs />} />
+          <Route exact path="postjob" element={<PostJob />} />
+          <Route exact path="applications/:jobId" element={<Applications />} />
+        </Route>
+        {/* USER PROTECTED ROUTES */}
+        <Route path="/user/*" element={<UserProtectedRoutes />}>
+          <Route exact path="home" element={<UserHome />} />
+          <Route exact path="alljobs" element={<AllJobs />} />
+          <Route exact path="appliedjobs" element={<AppliedJobs />} />
+          <Route exact path="updateUserProfile" element={<EditUserDetails />} />
+        </Route>
+        {/* 404 Page */}
+        <Route path="*" element={<PageNotFound />} />
+      </Routes>
 
-          
-        </Routes>
       </BrowserRouter>  
     </>
     
