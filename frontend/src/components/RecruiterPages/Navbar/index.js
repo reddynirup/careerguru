@@ -25,7 +25,7 @@ function Navbar(){
                 </div>
                 <div className="recruiter-options-container">
                     <div className="large-screen-options">
-                        <ul className="options-container">
+                        <ul className="recruiteroptions-container">
                             <Link to={"/recruiter/myjobs"}><li className="option">myJobs</li></Link>
                             <Link to={"/recruiter/postjob"}><li className="option">postJob</li></Link>
                         </ul>
@@ -37,7 +37,7 @@ function Navbar(){
                 </div>
             </div>
             {menuOpen && <div className="mobile-options">
-                <ul className="options-container">
+                <ul className="recruiteroptions-container">
                     <Link to={"/recruiter/myjobs"}><li className="option">myJobs</li></Link>
                     <Link to={"/recruiter/postjob"}><li className="option">postJob</li></Link>
                 </ul>

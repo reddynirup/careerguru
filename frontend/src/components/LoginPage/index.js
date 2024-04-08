@@ -155,11 +155,11 @@ function Login() {
                 {...register("password", { required: true })}
               />
             </div>
-            <div className="user-input-container">
+            <div className="login-input-container ">
               <label className="user-register-label" htmlFor="user-type">
                 USER-TYPE
               </label>
-              <select {...register("userType")} className="user-register-element" defaultValue="DEFAULT">
+              <select {...register("userType")} className="types-list-container" defaultValue="DEFAULT">
                 <option value="DEFAULT" disabled>
                   Choose an option
                 </option>

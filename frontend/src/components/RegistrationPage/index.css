@@ -43,6 +43,9 @@
   .user-register-page-form-container{
     width: 90%;
   }
+  .user-register-page{
+    width: 95%;
+  }
 }
 .register-page-image {
   width: 100%;
@@ -54,15 +57,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%;
-  padding: 10px;
+  width: 80%;
+  padding: 20px;
   box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
   border-radius: 10px;
+  min-height: 50%;
+  padding-top: 40px;
 }
 
 .user-input-container {
   margin-bottom: 20px;
-  width: 90%;
+  width: 100%;
 }
 
 .user-register-label {
@@ -129,4 +134,13 @@
   font-size: 18px;
   font-family: "Roboto";
   font-weight: 600;
+}
+
+.types-list-container {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
 }

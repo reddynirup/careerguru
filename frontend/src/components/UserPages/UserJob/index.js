@@ -69,7 +69,7 @@ function UserJob({ job,isApplied ,refreshAllJobs}) {
                 <p>${ctc}</p>
             </div>
             {/* <hr className='horizontal-line' /> */}
-            {isApplied ?<button className="apply-button" onClick={applyJob}>Apply Now</button>:
+            {isApplied ?<button className="apply-job-button" onClick={applyJob}>Apply Now</button>:
             <button className='applied-button' disabled>applied</button>}
         </div>
     );

@@ -44,13 +44,27 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+.no-applications-image{
+  width: 95%;
+}
 .no-applications-heading{
   font-size: 25px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: 600;
 }
 
-
+@media screen and (max-width:600px) {
+  .job-application-details-container{
+    justify-content: center;
+  }
+  .specific-job-details{
+    width: 93%;
+  }
+  .users-applications-details-container{
+    width: 93%;
+  }
+  
+}
 
 
 

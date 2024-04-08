@@ -44,17 +44,38 @@
   border-radius: 3px;
 }
 
+.applicant-button{
+  color: #fff;
+}
 .applicant-accept-button {
   background-color: #4caf50;
-  color: #fff;
 }
 
 .applicant-reject-button {
   background-color: #f44336;
-  color: #fff;
 }
 
 .applicant-review-button {
   background-color: #ff9800;
-  color: #fff;
+}
+
+
+
+@media screen and (max-width:600px) {
+  .applicant-application-status{
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+  }
+  .applicant-action-buttons{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .applicant-button{
+    margin-bottom: 10px;
+    width: 100%;
+  }
 }

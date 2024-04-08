@@ -41,7 +41,7 @@
     flex-grow: 1;
 }
 
-.options-container{
+.recruiteroptions-container{
     list-style-type: none;
     display: flex;
     align-items: center;
@@ -56,7 +56,7 @@
 .option:hover{
     color: #4caf50;
 }
-.logout-button{
+.logout-button {
     font-size: 16px;
     font-family: "Lucida Console", "Courier New", monospace;
     font-weight: 600;
@@ -72,6 +72,7 @@
     cursor: pointer;
     margin-right: 10px;
 }
+
 .large-screen-options{
     display: flex;
     align-items: center;
@@ -80,6 +81,14 @@
     .large-screen-options{
         display: none;
     }
+    /* .logout-button {
+        margin-left: 50px;
+    }
+
+    .options-container {
+        width: 100%;
+        justify-content: space-around;
+    } */
 }
 
 .mobile-hamburger-icon-container{
@@ -103,7 +112,7 @@
     display: none;
 }
 @media screen and (max-width:600px) {
-    .mobile-options{
+    .mobile-options {
         display: flex;
         flex-direction: row;
         align-items: center;
@@ -111,5 +120,6 @@
         padding-left: 20px;
         padding-right: 20px;
         width: 100%;
+        flex-wrap: wrap;
     }
 }

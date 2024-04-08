@@ -86,7 +86,7 @@
     margin-top: 0px;
 }
 
-.apply-button {
+.apply-job-button {
     background-color: #4caf50;
     color: #fff;
     border: none;
@@ -95,7 +95,7 @@
     cursor: pointer;
 }
 
-.apply-button:hover {
+.apply-job-button:hover {
     background-color: #45a049;
 }
 .applied-button{

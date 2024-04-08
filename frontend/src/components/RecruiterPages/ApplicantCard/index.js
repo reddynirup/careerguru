@@ -16,13 +16,13 @@ function ApplicantCard({ applicantDetails, handleStatusChange }) {
       <div className="applicant-application-status">
         <p className="applicant-status-text">Status: {status}</p>
         <div className="applicant-action-buttons">
-          <button className="applicant-accept-button" onClick={() => handleStatusChange('selected', userId)}>
+          <button className="applicant-accept-button applicant-button" onClick={() => handleStatusChange('selected', userId)}>
             Accept
           </button>
-          <button className="applicant-reject-button" onClick={() => handleStatusChange('rejected', userId)}>
+          <button className="applicant-reject-button applicant-button" onClick={() => handleStatusChange('rejected', userId)}>
             Reject
           </button>
-          <button className="applicant-review-button" onClick={() => handleStatusChange('underreview', userId)}>
+          <button className="applicant-review-button applicant-button" onClick={() => handleStatusChange('underreview', userId)}>
             Under Review
           </button>
         </div>

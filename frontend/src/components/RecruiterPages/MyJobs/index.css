@@ -15,6 +15,11 @@
     display: flex;
     flex-direction: column;
 }
+@media screen and (max-width:600px) {
+    .my-jobs-container{
+        width: 100%;
+    }
+}
 .your-jobs-heading{
     font-family:Arial, Helvetica, sans-serif;
     font-size: 30px;

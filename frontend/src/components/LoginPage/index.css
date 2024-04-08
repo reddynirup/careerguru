@@ -21,7 +21,7 @@
 
 .login-page-content {
   display: flex;
-  width: 80%;
+  width: 90%;
   margin: 0 auto;
 }
 
@@ -32,6 +32,9 @@
 @media screen and (max-width:700px) {
   .login-page-image-container{
     display:none;
+  }
+  .login-page-content{
+    width: 95%;
   }
 }
 .login-page-image {
@@ -48,6 +51,8 @@
   padding: 20px;
   /* min-height: 500px; */
 }
+
+
 
 .login-form {
   display: flex;
@@ -121,10 +126,21 @@
   color: #4caf50;
 }
 
+
+
 .errormessage{
   align-self: center;
   color: red;
   font-size: 18px;
   font-family: "Roboto";
   font-weight: 600;
+}
+
+.types-list-container{
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
 }

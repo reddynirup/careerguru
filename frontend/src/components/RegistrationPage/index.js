@@ -87,7 +87,7 @@ function UserRegister() {
         <div className="user-register-page-form-container">
           <form className="user-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="logo-container">
-            <img className="website-logo" src={logo} alt="app-logo"/>
+              <img className="website-logo" src={logo} alt="app-logo"/>
             </div>
             <div className="user-input-container">
               <label className="user-register-label" htmlFor="username">
@@ -129,7 +129,7 @@ function UserRegister() {
               <label className="user-register-label" htmlFor="user-type">
                 USER-TYPE
               </label>
-              <select {...register("userType")} className="user-register-element" defaultValue="DEFAULT">
+              <select {...register("userType")} className="types-list-container" defaultValue="DEFAULT">
                 <option value="DEFAULT" disabled>
                   Choose an option
                 </option>

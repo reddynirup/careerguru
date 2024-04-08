@@ -90,7 +90,7 @@ function FilterAndSearch({onApplyFilters,onClearFilters}) {
                 </select>
             </div>
             <button type="submit" className='filter-input filter-button apply-button' >Apply Filters</button>
-            <button type="button" className='filter-input filter-button clear-button' onClick={handleClearFilters}>Clear Filters</button>
+            <button type="button" className='filter-input filter-button clear-buttons' onClick={handleClearFilters}>Clear Filters</button>
         </form>
     );
 }
