@@ -68,7 +68,7 @@ recruiterApp.post("/login", expressAsyncHandler(async (request, response) => {
 
     // Create JWT token
     const signedJWTToken = jwt.sign({ email: recruiter.email, userType: "Recruiter" },
-      "recruiter@123",
+      process.env.RECRUITER_JWT_SECRET,
       { expiresIn: "1d" }
     );
 

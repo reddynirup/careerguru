@@ -1,11 +1,8 @@
 const mongoose = require("mongoose");
 
-// MongoDB Atlas connection string
-const uri = "mongodb+srv://nirupreddy:lcpV9a7tYhF2I6o2@careerguru.rcuwa8c.mongodb.net/careerguru?retryWrites=true&w=majority";
-
 function connectToMongo() {
     mongoose.set("strictQuery", true);
-    mongoose.connect(uri, {
+    mongoose.connect(process.env.MONGO_URI, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
         dbName: "careerguru"

@@ -1,0 +1,60 @@
+.applicant-user-card {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.applicant-user-card.applicant-selected {
+  background-color: #a5d6a7;
+}
+
+.applicant-user-card.applicant-rejected {
+  background-color: #ef9a9a;
+}
+
+.applicant-user-card.applicant-underreview {
+  background-color: #ffcc80;
+}
+
+.applicant-user-info {
+  flex: 1;
+}
+
+.applicant-info-item {
+  margin-bottom: 5px;
+}
+
+.applicant-application-status {
+  text-align: center;
+}
+
+.applicant-status-text {
+  margin-bottom: 5px;
+}
+
+.applicant-action-buttons button {
+  margin-right: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 3px;
+}
+
+.applicant-accept-button {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.applicant-reject-button {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.applicant-review-button {
+  background-color: #ff9800;
+  color: #fff;
+}

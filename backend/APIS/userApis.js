@@ -61,7 +61,7 @@ userApp.post("/login",expressAsyncHandler(async (request, response) => {
 
       // Create JWT token
       const signedJWTToken = jwt.sign({ email: user.email, userType: "JobSeeker" },
-        "job@seeker@123",
+        process.env.USER_JWT_SECRET,
         { expiresIn: "1d" }
       );
 
