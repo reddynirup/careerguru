@@ -1,4 +1,4 @@
-import React, { useState, useEffect ,useCallback} from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar";
 import { BallTriangle } from "react-loader-spinner";
@@ -11,7 +11,7 @@ function MyJobs() {
   const [loading, setLoading] = useState(true);
   const recruiterId = JSON.parse(localStorage.getItem("recruiterInfo")).recruiterId;
 
-  const fetchData = useCallback(async () => {
+  const fetchData = async () => {
     try {
       setLoading(true);
       const options = {
@@ -29,7 +29,7 @@ function MyJobs() {
       console.error("Error fetching jobs:", error);
       setLoading(false);
     }
-  }, [recruiterId]); // Include recruiterId in the dependency array
+  };
 
   useEffect(() => {
     fetchData();

@@ -1,4 +1,4 @@
-import React, { useEffect, useState,useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Navbar from '../Navbar'; // Import your Navbar component
 import ApplicantCard from '../ApplicantCard';
@@ -10,26 +10,26 @@ const JobApplicationDetailsPage = () => {
   const [jobDetails, setJobDetails] = useState({});
   const [userDetails, setUserDetails] = useState([]);
 
-  const handleStatusChange = useCallback(async (status, userId) => {
+  const handleStatusChange = async  (status,userId) => {
     // Handle the logic to update the application status
-    const jobApplicationUpdationDetails = {
-      userId,
-      status,
-      jobId,
-    };
-    const url = "/recruiter-api/update-application-status";
+    const jobApplicationUpdationDetails={
+        userId,
+        status,
+        jobId,
+    }
+    const url="/recruiter-api/update-application-status";
     const options = {
-      method: 'PUT',
-      body: JSON.stringify(jobApplicationUpdationDetails),
-      headers: {
-        'Content-Type': 'application/json',
-      }
-    };
-    const response = await fetch(url, options);
-    const data = await response.json();
+        method: 'PUT',
+        body: JSON.stringify(jobApplicationUpdationDetails),
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      };
+    const response=await fetch(url,options);
+    const data=await response.json();
     console.log(data);
     console.log(`Changing status to: ${status}`);
-  }, [jobId]);
+  };
 
   useEffect(() => {
     // Fetch job and user details based on the jobId
