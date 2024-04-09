@@ -4,10 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Preview of My Project
 
-<video width="640" height="360" controls>
-  <source src="my_video.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+[Click here to watch the video](my_video.mp4)
 
 
 ## Available Scripts
