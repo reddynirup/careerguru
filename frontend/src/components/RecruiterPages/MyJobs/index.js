@@ -11,7 +11,7 @@ function MyJobs() {
   const [loading, setLoading] = useState(true);
   const recruiterId = JSON.parse(localStorage.getItem("recruiterInfo")).recruiterId;
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
       setLoading(true);
       const options = {
@@ -29,7 +29,7 @@ function MyJobs() {
       console.error("Error fetching jobs:", error);
       setLoading(false);
     }
-  };
+  }, [recruiterId]); // Include recruiterId in the dependency array
 
   useEffect(() => {
     fetchData();
