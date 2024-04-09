@@ -6,6 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Click here to watch the video](my_video.mp4)
 
+[Click here to visit the live website](https://careerguru-1wow.onrender.com/)
 
 ## Available Scripts
 
