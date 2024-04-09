@@ -23,18 +23,17 @@ function MyJobs() {
       );
       const data = await response.json();
       console.log(data);
-      setTimeout(()=>{
-        setJobs(data);
-        setLoading(false);
-      },1500);
+      setJobs(data);
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching jobs:", error);
       setLoading(false);
     }
   };
+
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   const deleteJobById = async (jobId) => {
     const url = `/recruiter-api/deletejob/${jobId}`;
