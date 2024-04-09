@@ -4,9 +4,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # Preview of My Project
 
-[![Project Preview](https://www.youtube.com/watch?v=0yw-z6f7Mb4)
+[Click here to watch the video](https://www.youtube.com/watch?v=0yw-z6f7Mb4)
 
-Click on the image above to watch a preview of my project.
 
 ## Available Scripts
 
