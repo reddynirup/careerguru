@@ -8,8 +8,10 @@ import "./index.css";
 
 function UserRegister() {
   const navigate=useNavigate();
-  const { register, handleSubmit, watch } = useForm();
-  const [errorMsg, setErrorMsg] = useState(""); 
+  const { register, handleSubmit, watch,formState: { errors } } = useForm();
+  const [errorMsg, setErrorMsg] = useState("");
+  const [pic,setPic]=useState();
+  const [picLoading,setPicLoading]=useState();
 
   const onSubmit = async  (dat) => {
     const user=dat;
@@ -49,7 +51,7 @@ function UserRegister() {
         email:user.email,
         password:user.password,
         companyName:user.companyName,
-        companyImageUrl:user.companyImageUrl
+        companyImageUrl:pic
       }
       const options = {
         method: 'POST',
@@ -76,6 +78,40 @@ function UserRegister() {
     }
   };
 
+  const postDetails = (pics) => {
+    setPicLoading(true);
+    //raise error is pic not seletcted
+    if (pics === undefined) {
+      return;
+    }
+
+
+    if (pics.type === "image/jpeg" || pics.type === "image/png") {
+      const data = new FormData();
+      data.append("file", pics);
+      data.append("upload_preset", "chat-app");
+      data.append("cloud_name", "dqwdin9cy");
+      fetch("https://api.cloudinary.com/v1_1/dqwdin9cy/image/upload", {
+        method: "post",
+        body: data,
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setPic(data.url.toString());
+          // console.log(data.url.toString());
+          setPicLoading(false);
+        })
+        .catch((err) => {
+          console.log(err);
+          setPicLoading(false);
+        });
+    } else {
+      
+      setPicLoading(false);
+      return;
+    }
+  };
+
   const userType = watch("userType");
 
   return (
@@ -98,8 +134,9 @@ function UserRegister() {
                 id="username"
                 name="username"
                 className="user-register-element"
-                {...register("username", { required: true })}
+                {...register("username", { required: "*Username is required" })}
               />
+              {errors.username && <p className="error-message">{errors.username.message}</p>}
             </div>
             <div className="user-input-container">
               <label className="user-register-label" htmlFor="email">
@@ -110,8 +147,9 @@ function UserRegister() {
                 id="email"
                 name="email"
                 className="user-register-element"
-                {...register("email", { required: true })}
+                {...register("email", { required: "*Email is required" })}
               />
+              {errors.email && <p className="error-message">{errors.email.message}</p>}
             </div>
             <div className="user-input-container">
               <label className="user-register-label" htmlFor="password">
@@ -122,20 +160,25 @@ function UserRegister() {
                 id="password"
                 name="password"
                 className="user-register-element"
-                {...register("password", { required: true })}
+                {...register("password", { required: "*Password is required" })}
               />
+              {errors.password && <p className="error-message">{errors.password.message}</p>}
             </div>
             <div className="user-input-container">
               <label className="user-register-label" htmlFor="user-type">
                 USER-TYPE
               </label>
-              <select {...register("userType")} className="types-list-container" defaultValue="DEFAULT">
+              <select {...register("userType", { 
+                required: "*User type is required",
+                validate: value => value === "Recruiter" || value === "JobSeeker" || "*Please select a valid user type"
+              })} className="types-list-container" defaultValue="DEFAULT">
                 <option value="DEFAULT" disabled>
                   Choose an option
                 </option>
                 <option value="Recruiter">Recruiter</option>
                 <option value="JobSeeker">Job Seeker</option>
               </select>
+              {errors.userType && <p className="error-message">{errors.userType.message}</p>}
             </div>
 
             {/* Additional fields based on the selected user type */}
@@ -169,27 +212,28 @@ function UserRegister() {
                     id="companyName"
                     name="companyName"
                     className="user-register-element"
-                    {...register("companyName", { required: true })}
+                    {...register("companyName", { required: "*Company name is required" })}
                   />
+                  {errors.companyName && <p className="error-message">{errors.companyName.message}</p>}
                 </div>
                 <div className="user-input-container">
                   <label className="user-register-label" htmlFor="companyImageUrl">
-                    COMPANY IMAGE URL
+                    COMPANY IMAGE 
                   </label>
                   <input
-                    type="text"
+                    type="file"
                     id="companyImageUrl"
                     name="companyImageUrl"
                     className="user-register-element"
-                    {...register("companyImageUrl", { required: true })}
+                    onChange={(e) => postDetails(e.target.files[0])}
                   />
                 </div>
               </>
             )}
 
             <div className="register-page-button-container">
-              <button type="submit" className="register-button">
-                Register
+              <button type="submit" className="register-button" >
+                {picLoading?"image uploading please wait!!":"Register"}
               </button>
               <p className="already-have-account">
                 Already have an account? <Link to={"/"}><span className="got-to-login-link">Login here</span>

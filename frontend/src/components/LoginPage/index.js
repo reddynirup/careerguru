@@ -8,7 +8,7 @@ import LoginImage from "../../assets/loginpageimagee.jpg";
 import "./index.css";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const [errorMsg, setErrorMsg] = useState(""); 
   const navigate=useNavigate();
 
@@ -140,8 +140,9 @@ function Login() {
                 id="email"
                 name="email"
                 className="login-element"
-                {...register("email", { required: true })}
+                {...register("email", { required: "*Email is required" })}
               />
+              {errors.email && <p className="error-message">{errors.email.message}</p>}
             </div>
             <div className="login-input-container">
               <label className="login-label" htmlFor="password">
@@ -152,20 +153,26 @@ function Login() {
                 id="password"
                 name="password"
                 className="login-element"
-                {...register("password", { required: true })}
+                {...register("password", { required: "*Password is required" })}
               />
+              {errors.password && <p className="error-message">{errors.password.message}</p>}
             </div>
             <div className="login-input-container ">
               <label className="user-register-label" htmlFor="user-type">
                 USER-TYPE
               </label>
-              <select {...register("userType")} className="types-list-container" defaultValue="DEFAULT">
+              <select {...register("userType", { 
+                  required: "User type is required",
+                  validate: value => value === "Recruiter" || value === "JobSeeker" || "*Please select a valid user type"
+                })} className="types-list-container" defaultValue="DEFAULT">
                 <option value="DEFAULT" disabled>
                   Choose an option
                 </option>
                 <option value="Recruiter">Recruiter</option>
                 <option value="JobSeeker">Job Seeker</option>
               </select>
+              {errors.userType && <p className="error-message">{errors.userType.message}</p>}
+
             </div>
 
             <div className="login-button-container">

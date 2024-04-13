@@ -32,11 +32,9 @@ function AllJobs() {
                 const response = await fetch(`/user-api/alljobs/${userId}?${queryParams}`);
                 const data = await response.json();
                 // console.log(data.applied);
-                setTimeout(()=>{
-                    setJobs(data.jobs);
-                    setAppliedJobs(data.applied);
-                    setLoading(false);
-                },1000);
+                setJobs(data.jobs);
+                setAppliedJobs(data.applied);
+                setLoading(false);
             } catch (error) {
                 console.error('Error fetching data:', error);
                 setLoading(false);

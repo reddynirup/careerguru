@@ -13,6 +13,7 @@ function MyJobs() {
 
   const fetchData = async () => {
     try {
+      console.log("asdadas");
       setLoading(true);
       const options = {
         method: "GET",
@@ -33,7 +34,7 @@ function MyJobs() {
 
   useEffect(() => {
     fetchData();
-  }, [fetchData]);
+  }, []);
 
   const deleteJobById = async (jobId) => {
     const url = `/recruiter-api/deletejob/${jobId}`;
@@ -69,7 +70,7 @@ function MyJobs() {
             <h1 className="no-content-heading">ZERO JOBS FOUND</h1>
             <img src={NoJobImage} className="no-content-found-image" alt="nocontent"/>
             {/* <h1 className="no-content-heading">POST RELATED JOBS</h1> */}
-            <Link to="/postjob"><button className="no-content-button">POST</button></Link>
+            <Link to="/recruiter/postjob"><button className="no-content-button">POST</button></Link>
           </div>
         ) : (
           <div className="jobs-container">

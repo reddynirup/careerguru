@@ -6,34 +6,7 @@ import "./index.css";
 function EditUserDetails() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const [notification, setNotification] = useState(null);
-
-  useEffect(() => {
-    const fetchUserDetails = async () => {
-      try {
-        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
-        const userId = userInfo ? userInfo.userId : null;
-        const url = `/user-api/user-details/${userId}`;
-        const response = await fetch(url);
-        const data = await response.json();
-        
-        // Set form values with user details
-        if (data && data.user) {
-          const { username, email, phoneNumber, address, skills, educationDetails } = data.user;
-          setValue("fullName", username);
-          setValue("email", email);
-          setValue("phoneNumber", phoneNumber);
-          setValue("address", address);
-          setValue("skills", skills);
-          setValue("educationDetails", educationDetails);
-        }
-      } catch (error) {
-        console.error("Error fetching user details:", error);
-      }
-    };
-
-    fetchUserDetails();
-  }, [setValue]);
-
+  
   const handleFormSubmit = async (data) => {
     const updateDetails = {
       name: data.fullName,
@@ -45,6 +18,9 @@ function EditUserDetails() {
     };
 
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    userInfo.username=data.fullName;
+    userInfo.email=data.email;
+    localStorage.setItem("userInfo",JSON.stringify(userInfo));
     const userId = userInfo ? userInfo.userId : null;
     const url = `/user-api/updateProfile/${userId}`;
     const options = {
@@ -73,6 +49,34 @@ function EditUserDetails() {
       setNotification("Failed to update user details");
     }
   };
+  
+  useEffect(() => {
+    const fetchUserDetails = async () => {
+      try {
+        const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+        const userId = userInfo ? userInfo.userId : null;
+        const url = `/user-api/user-details/${userId}`;
+        const response = await fetch(url);
+        const data = await response.json();
+        
+        // Set form values with user details
+        if (data && data.user) {
+          const { username, email, phoneNumber, address, skills, educationDetails } = data.user;
+          setValue("fullName", username);
+          setValue("email", email);
+          setValue("phoneNumber", phoneNumber);
+          setValue("address", address);
+          setValue("skills", skills);
+          setValue("educationDetails", educationDetails);
+        }
+      } catch (error) {
+        console.error("Error fetching user details:", error);
+      }
+    };
+
+    fetchUserDetails();
+  }, [setValue,handleFormSubmit]);
+
 
   return (
     <div className="edit-user-details-page">

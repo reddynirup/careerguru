@@ -23,6 +23,7 @@
   display: flex;
   width: 90%;
   margin: 0 auto;
+  height: 100vh;
 }
 
 .login-page-image-container {
@@ -61,7 +62,6 @@
   padding: 20px;
   box-shadow: 0px 8px 40px rgba(7, 7, 7, 0.08);
   border-radius: 10px;
-  min-height: 50%;
   padding-top: 40px;
 }
 

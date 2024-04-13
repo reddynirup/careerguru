@@ -26,11 +26,8 @@ function AppliedJobs() {
         // Fetch applied jobs using userId
         const response = await fetch(`/user-api/appliedjobs/${userId}`);
         const data = await response.json();
-
-        setTimeout(()=>{
-          setAppliedJobs(data.appliedJobs);
-          setLoading(false);
-        },1000);
+        setAppliedJobs(data.appliedJobs);
+        setLoading(false);
       } catch (error) {
         console.error("Error fetching applied jobs:", error);
         setLoading(false);
@@ -60,7 +57,7 @@ function AppliedJobs() {
                 wrapperStyle={{}}
                 wrapperClass=""
                 visible={true}
-                />
+            />
         </div>
         ) : (
           appliedJobs.length===0?(

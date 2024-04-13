@@ -45,7 +45,7 @@
   margin-bottom: 20px;
 }
 .no-applications-image{
-  width: 95%;
+  width: 50%;
 }
 .no-applications-heading{
   font-size: 25px;
@@ -63,7 +63,9 @@
   .users-applications-details-container{
     width: 93%;
   }
-  
+  .no-applications-image{
+    width: 90%;
+  } 
 }
 
 
