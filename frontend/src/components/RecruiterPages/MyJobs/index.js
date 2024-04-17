@@ -45,7 +45,10 @@ function MyJobs() {
     const response = await fetch(url, options);
     const data = await response.json();
     console.log(data);
-    fetchData();
+
+
+    setJobs(prevJobs => prevJobs.filter(job => job._id !== jobId));
+    // fetchData();
   };
 
   return (
