@@ -1,5 +1,6 @@
 import React from 'react';
 import './index.css';
+import { toast} from 'react-toastify';
 
 function UserJob({ job,isApplied ,refreshAllJobs}) {
     const {
@@ -37,6 +38,17 @@ function UserJob({ job,isApplied ,refreshAllJobs}) {
         };
         const response=await fetch(url,options);
         const data=await response.json();
+       toast.success('Application Submitted Successfully', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            toastStyle: { width: '400px' } // Adjust the width value as needed
+        });
         console.log(data);
         refreshAllJobs(true);
     }

@@ -2,6 +2,7 @@ import React, { useState,useEffect} from "react";
 import { useForm } from "react-hook-form";
 import { Link ,useNavigate} from "react-router-dom";
 import Cookies from 'js-cookie';
+  import { toast } from 'react-toastify';
 
 import logo from "../../assets/logo.png";
 import LoginImage from "../../assets/loginpageimagee.jpg";
@@ -53,11 +54,21 @@ function Login() {
           console.log(data);
           localStorage.setItem('userInfo', JSON.stringify(data.user));
           Cookies.set('user_jwt_token', data.token, { expires: 30 });
+          toast.success('Login successfully!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
           navigate("/user/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){
-          throw new Error("Invalid email!!");
+          throw new Error("User with this email does not exist!");
         }
         else if(response.status===202){
           throw new Error("Invalid password!!");
@@ -66,7 +77,17 @@ function Login() {
           throw new Error("server down right now!!");
         }
       } catch (error) {
-        setErrorMsg(error.message);
+        // setErrorMsg(error.message);
+        toast.error(error.message, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
       }
   
     }
@@ -97,11 +118,21 @@ function Login() {
           // console.log(data);
           localStorage.setItem('recruiterInfo', JSON.stringify(data.recruiter));
           Cookies.set('recruiter_jwt_token', data.token, { expires: 30 });
+          toast.success('Login successfully!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
           navigate("/recruiter/home",{replace:true})
           setErrorMsg("");
         }
         else if(response.status===201){
-          throw new Error("Invalid email!!");
+          throw new Error("User with this email does not exist!");
         }
         else if(response.status===202){
           throw new Error("Invalid password!!");
@@ -110,7 +141,16 @@ function Login() {
           throw new Error("server down right now!!");
         }
       } catch (error) {
-        setErrorMsg(error.message);
+        toast.error(error.message, {
+              position: "top-center",
+              autoClose: 2000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+          });
       }
     }
   };

@@ -47,33 +47,31 @@ function AppliedJobs() {
       <div className="applied-jobs-container">
         <h2 className="applied-jobs-heading">Applied Jobs</h2>
         {loading ? (
-          <div className='loading-container'>
-            <BallTriangle
-                height={100}
-                width={100}
-                radius={5}
-                color="#4fa94d"
-                ariaLabel="ball-triangle-loading"
-                wrapperStyle={{}}
-                wrapperClass=""
-                visible={true}
-            />
-        </div>
-        ) : (
-          appliedJobs.length===0?(
-            <div className="no-jobs-applied-view">
-              <h1 className="no-jobs-applied-view-heading">No Jobs Applied!</h1>
-              <img src={NoAppliedJobsImg} alt="no-jobs-applied-view" className="no-jobs-applied-view-i" />
-              <Link to="/alljobs"><button className="no-jobs-applied-view-apply-now">Apply Now</button></Link>
-            </div>
-          ):(
-            <div className="applied-jobs-list">
-            {appliedJobs.map((job) => (
-              <AppliedJobCard jobDetails={job} key={job["_id"]} refreshAppliedJobs={refreshAppliedJobs}/>
-            ))}
-          </div>
-          )
-        )}
+              <div className='loading-container'>
+                  <BallTriangle
+                      height={100}
+                      width={100}
+                      radius={5}
+                      color="#4fa94d"
+                      ariaLabel="ball-triangle-loading"
+                      wrapperStyle={{}}
+                      wrapperClass=""
+                      visible={true}
+                  />
+              </div>
+          ) : (appliedJobs===undefined || appliedJobs.length === 0) ? (
+              <div className="no-jobs-applied-view">
+                  <h1 className="no-jobs-applied-view-heading">No Jobs Applied!</h1>
+                  <img src={NoAppliedJobsImg} alt="no-jobs-applied-view" className="no-jobs-applied-view-i" />
+                  <Link to="/user/alljobs"><button className="no-jobs-applied-view-apply-now">Apply Now</button></Link>
+              </div>
+          ) : (
+              <div className="applied-jobs-list">
+                  {appliedJobs && appliedJobs.map((job) => (
+                      <AppliedJobCard jobDetails={job} key={job["_id"]} refreshAppliedJobs={refreshAppliedJobs}/>
+                  ))}
+              </div>
+          )}
       </div>
     </div>
   );

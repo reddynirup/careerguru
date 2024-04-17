@@ -13,12 +13,15 @@ import AllJobs from "./components/UserPages/AllJobs";
 import AppliedJobs from "./components/UserPages/AppliedJobs";
 import EditUserDetails from "./components/UserPages/EditUserDetails";
 // import HomePage from "./components/HomePage";
+import "react-toastify/dist/ReactToastify.css";
+  import {Bounce, ToastContainer } from 'react-toastify';
 
 function App() {
 
   return (
     <>
       <BrowserRouter>
+      <ToastContainer transition={Bounce}/>
       <Routes>
         {/* PUBLIC ROUTES */}
         {/* <Route exact path="/" element={<HomePage />} /> */}

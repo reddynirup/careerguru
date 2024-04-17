@@ -3,10 +3,10 @@ import { useNavigate } from "react-router-dom";
 import UserNavbar from "../UserNavbar";
 import { useForm } from "react-hook-form";
 import "./index.css";
+import { toast } from 'react-toastify';
 
 function EditUserDetails() {
   const { register, handleSubmit, reset, setValue } = useForm();
-  const [notification, setNotification] = useState(null);
   const navigate=useNavigate();
   
   const handleFormSubmit = async (data) => {
@@ -38,17 +38,35 @@ function EditUserDetails() {
       const data = await response.json();
       console.log(data);
 
-      setNotification("User details updated successfully");
+      toast.success('Details updated successfully', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          toastStyle: { width: '400px' } // Adjust the width value as needed
+      });
 
-      // Show notification for 1 second and then reset
-      setTimeout(() => {
-        setNotification(null);
-      }, 1000);
+
+      
       navigate("/user/home");
       reset();
     } catch (error) {
       console.error("Error updating user details:", error);
-      setNotification("Failed to update user details");
+      toast.error('Failed to update user details', {
+          position: "top-center",
+          autoClose: 2000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          toastStyle: { width: '400px' } // Adjust the width value as needed
+      });
     }
   };
   
@@ -154,12 +172,6 @@ function EditUserDetails() {
             Save Changes
           </button>
         </form>
-
-        {notification && (
-          <div className="notification">
-            <p>{notification}</p>
-          </div>
-        )}
       </div>
     </div>
   );

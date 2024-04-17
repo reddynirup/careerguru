@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import registrationImage from "../../assets/registrationImage.avif";
 import logo from "../../assets/logo.png";
 import "./index.css";
@@ -38,6 +39,16 @@ function UserRegister() {
       
         const data = await response.json();
         console.log(data);
+        toast.success('Registered successfully!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         navigate("/",{replace:true});
         setErrorMsg("");
       } catch (error) {
@@ -70,6 +81,16 @@ function UserRegister() {
       
         const data = await response.json();
         console.log(data);
+        toast.success('Registered successfully!', {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
         navigate("/",{replace:true});
         setErrorMsg("");
       } catch (error) {

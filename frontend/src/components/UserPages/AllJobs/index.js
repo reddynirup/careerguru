@@ -23,7 +23,6 @@ function AllJobs() {
         const userId = userInfo ? userInfo.userId : null;
 
         const fetchData = async () => {
-            console.log(filters)
             try {
                 setLoading(true);
                 const queryParams = new URLSearchParams(filters);

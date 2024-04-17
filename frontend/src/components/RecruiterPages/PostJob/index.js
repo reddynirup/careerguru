@@ -3,6 +3,7 @@ import { Link} from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import Navbar from '../Navbar';
 import './index.css';
+import { toast } from 'react-toastify';
 
 function PostJob() {
 
@@ -39,7 +40,16 @@ function PostJob() {
     const response=await fetch(url,options);
     const datares=await response.json();
     console.log(datares);
-    // For simplicity, I'm just printing the data to the console here
+    toast.success('Job Posted Successfully!', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });    
 
     // You can navigate to another page after submitting the form
     // Reset the form

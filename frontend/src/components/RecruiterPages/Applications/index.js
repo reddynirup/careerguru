@@ -4,6 +4,7 @@ import Navbar from '../Navbar'; // Import your Navbar component
 import ApplicantCard from '../ApplicantCard';
 import NoApplicationsImage from "../../../assets/no-jobs-view.png";
 import './index.css'; // Import the CSS file
+import { toast } from 'react-toastify';
 
 const JobApplicationDetailsPage = () => {
   const { jobId } = useParams();
@@ -28,7 +29,16 @@ const JobApplicationDetailsPage = () => {
     const response=await fetch(url,options);
     const data=await response.json();
     console.log(data);
-    console.log(`Changing status to: ${status}`);
+    toast.success('User Application Status Updated!', {
+        position: "top-center",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });   
     const updatedUserDetails = userDetails.map(user => {
       if (user.userId === userId) {
         return { ...user, status: status }; // Update the status of the user

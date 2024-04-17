@@ -17,7 +17,7 @@ function getStatusColor(status) {
 }
 
 function AppliedJobCard({ jobDetails, refreshAppliedJobs }) {
-    console.log(jobDetails);
+    // console.log(jobDetails);
   const {
     applicationId,
     companyImageUrl,
