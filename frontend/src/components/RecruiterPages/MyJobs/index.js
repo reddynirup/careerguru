@@ -36,7 +36,7 @@ function MyJobs() {
     };
 
     fetchData();
-  }, []);
+  }, [recruiterId]);
 
   const deleteJobById = async (jobId) => {
     const url = `/recruiter-api/deletejob/${jobId}`;
