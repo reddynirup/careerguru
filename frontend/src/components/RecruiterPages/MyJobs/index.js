@@ -11,28 +11,30 @@ function MyJobs() {
   const [loading, setLoading] = useState(true);
   const recruiterId = JSON.parse(localStorage.getItem("recruiterInfo")).recruiterId;
 
-  const fetchData = async () => {
-    try {
-      console.log("asdadas");
-      setLoading(true);
-      const options = {
-        method: "GET",
-      };
-      const response = await fetch(
-        `/recruiter-api/myjobs/${recruiterId}?sortBy=latest`,
-        options
-      );
-      const data = await response.json();
-      console.log(data);
-      setJobs(data);
-      setLoading(false);
-    } catch (error) {
-      console.error("Error fetching jobs:", error);
-      setLoading(false);
-    }
-  };
+  
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        console.log("asdadas");
+        setLoading(true);
+        const options = {
+          method: "GET",
+        };
+        const response = await fetch(
+          `/recruiter-api/myjobs/${recruiterId}?sortBy=latest`,
+          options
+        );
+        const data = await response.json();
+        console.log(data);
+        setJobs(data);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching jobs:", error);
+        setLoading(false);
+      }
+    };
+
     fetchData();
   }, []);
 
