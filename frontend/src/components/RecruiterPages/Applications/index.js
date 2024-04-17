@@ -29,6 +29,13 @@ const JobApplicationDetailsPage = () => {
     const data=await response.json();
     console.log(data);
     console.log(`Changing status to: ${status}`);
+    const updatedUserDetails = userDetails.map(user => {
+      if (user.userId === userId) {
+        return { ...user, status: status }; // Update the status of the user
+      }
+      return user;
+    });
+    setUserDetails(updatedUserDetails);
   };
 
   useEffect(() => {
@@ -51,7 +58,7 @@ const JobApplicationDetailsPage = () => {
 
     }
     fetchData();
-  }, [jobId,handleStatusChange]);
+  }, [jobId]);
 
 
 

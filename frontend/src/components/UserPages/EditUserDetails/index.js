@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import UserNavbar from "../UserNavbar";
 import { useForm } from "react-hook-form";
 import "./index.css";
@@ -6,6 +7,7 @@ import "./index.css";
 function EditUserDetails() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const [notification, setNotification] = useState(null);
+  const navigate=useNavigate();
   
   const handleFormSubmit = async (data) => {
     const updateDetails = {
@@ -42,7 +44,7 @@ function EditUserDetails() {
       setTimeout(() => {
         setNotification(null);
       }, 1000);
-
+      navigate("/user/home");
       reset();
     } catch (error) {
       console.error("Error updating user details:", error);
@@ -75,7 +77,7 @@ function EditUserDetails() {
     };
 
     fetchUserDetails();
-  }, [setValue,handleFormSubmit]);
+  }, [setValue,]);
 
 
   return (
