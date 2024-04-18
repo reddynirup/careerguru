@@ -110,7 +110,7 @@ function UserRegister() {
     if (pics.type === "image/jpeg" || pics.type === "image/png") {
       const data = new FormData();
       data.append("file", pics);
-      data.append("upload_preset", "chat-app");
+      data.append("upload_preset", "dj5tzyxw");
       data.append("cloud_name", "dqwdin9cy");
       fetch("https://api.cloudinary.com/v1_1/dqwdin9cy/image/upload", {
         method: "post",
