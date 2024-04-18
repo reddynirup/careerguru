@@ -27,6 +27,9 @@ const UserSchema = new Schema({
     educationDetails: {
         type: String
     },
+    resumeUrl:{
+        type:String
+    },
 });
 const User = mongoose.model('Users', UserSchema);
 module.exports = User;

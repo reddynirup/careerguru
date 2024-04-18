@@ -1,9 +1,9 @@
-import React from 'react';
-import './index.css'; // Import the CSS file
+import React, { useState } from 'react';
+import './index.css'; 
+import Popup from 'reactjs-popup';
 
 function ApplicantCard({ applicantDetails, handleStatusChange }) {
-  const { userId, username, email, phoneNumber, skills, educationDetails, status } = applicantDetails;
-
+  const { userId, username, email, phoneNumber, skills, educationDetails, status, resume } = applicantDetails;
   return (
     <div className={`applicant-user-card applicant-${status.toLowerCase()}`}>
       <div className="applicant-user-info">
@@ -14,6 +14,32 @@ function ApplicantCard({ applicantDetails, handleStatusChange }) {
         <p className="applicant-info-item">Education: {educationDetails}</p>
       </div>
       <div className="applicant-application-status">
+      <Popup
+            trigger={<button className="button">View Resume</button>}
+            modal
+            nested
+        >
+              {close => (
+                <div className="modal">
+                  <button className="close" onClick={close}>
+                    &times;
+                  </button>
+                  <div className="header">Resume Preview</div>
+                  <div className="content">
+                    {resume ? (
+                      <iframe src={resume} title="Resume" width="100%" height="500px"></iframe>
+                    ) : (
+                      <p className='resume-not-found-heading'>Resume not available</p>
+                    )}
+                  </div>
+                  <div className="actions">
+                    <button className="button" onClick={close}>
+                      Close
+                    </button>
+                  </div>
+                </div>
+              )}
+        </Popup>
         <p className="applicant-status-text">Status: {status}</p>
         <div className="applicant-action-buttons">
           <button className="applicant-accept-button applicant-button" onClick={() => handleStatusChange('selected', userId)}>
@@ -27,6 +53,7 @@ function ApplicantCard({ applicantDetails, handleStatusChange }) {
           </button>
         </div>
       </div>
+      
     </div>
   );
 }

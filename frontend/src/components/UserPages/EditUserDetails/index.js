@@ -8,8 +8,33 @@ import { toast } from 'react-toastify';
 function EditUserDetails() {
   const { register, handleSubmit, reset, setValue } = useForm();
   const navigate=useNavigate();
+  const [filee,setFile]=useState(null);
+
+  const fileUpload=async ()=>{
+    const data=new FormData();
+    data.append("file",filee);
+    data.append("upload_preset","dj5tzyxw");
+    data.append("cloud_name", "dqwdin9cy");
+
+    try{
+      const url = `https://api.cloudinary.com/v1_1/dqwdin9cy/raw/upload`;
+      const response=await fetch(url,{
+        method: "post",
+        body: data,
+      })
+      const responseData = await response.json(); 
+      return responseData.secure_url;
+;
+    }
+    catch(error){
+      console.log(error);
+    }
+  }
+
   
   const handleFormSubmit = async (data) => {
+    const resumeUrl=await fileUpload();
+
     const updateDetails = {
       name: data.fullName,
       email: data.email,
@@ -17,6 +42,7 @@ function EditUserDetails() {
       address: data.address,
       skills: data.skills,
       educationDetails: data.educationDetails,
+      resumeUrl
     };
 
     const userInfo = JSON.parse(localStorage.getItem("userInfo"));
@@ -164,7 +190,7 @@ function EditUserDetails() {
             <input
               className="edit-user-details-input"
               type="file"
-              disabled
+              onChange={(e)=>setFile(e.target.files[0])}
             />
           </label>
 

@@ -225,8 +225,7 @@ userApp.delete("/withdraw-application/:applicationId", expressAsyncHandler(async
 userApp.put("/updateProfile/:userId", expressAsyncHandler(async (request, response) => {
   try {
     const { userId } = request.params;
-    const { name, email, phoneNumber, address, skills, educationDetails } = request.body;
-    // console.log(request.body);
+    const { name, email, phoneNumber, address, skills, educationDetails,resumeUrl } = request.body;;
 
     // Validate if userId exists
     if (!userId) {
@@ -241,6 +240,8 @@ userApp.put("/updateProfile/:userId", expressAsyncHandler(async (request, respon
     if (address!=="") updateFields.address = address;
     if (skills!=="") updateFields.skills = skills;
     if (educationDetails!=="") updateFields.educationDetails = educationDetails;
+    if (resumeUrl) updateFields.resumeUrl = resumeUrl;
+
 
     // Find and update the user details
     const updatedUser = await User.findByIdAndUpdate(userId, updateFields, { new: true });

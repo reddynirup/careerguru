@@ -14,7 +14,7 @@ import AppliedJobs from "./components/UserPages/AppliedJobs";
 import EditUserDetails from "./components/UserPages/EditUserDetails";
 // import HomePage from "./components/HomePage";
 import "react-toastify/dist/ReactToastify.css";
-  import {Bounce, ToastContainer } from 'react-toastify';
+  import {ToastContainer ,Bounce} from 'react-toastify';
 
 function App() {
 

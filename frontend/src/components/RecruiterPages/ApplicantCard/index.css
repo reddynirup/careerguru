@@ -79,3 +79,48 @@
     width: 100%;
   }
 }
+
+.modal {
+  font-size: 12px;
+  padding: 10px;
+  padding-right: 20px;
+  width: 500px;
+  background-color:#ccc;
+  border-radius: 10px;
+}
+.modal .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+
+.modal .content {
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.modal .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+
+.close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: hsl(194, 36%, 65%);
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+.resume-not-found-heading{
+  text-align: center;
+}

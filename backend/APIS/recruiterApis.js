@@ -223,6 +223,7 @@ recruiterApp.get("/job-applications/:jobId", expressAsyncHandler(async (request,
         educationDetails: user.educationDetails,
         status: application.status,
         appliedOn: application.appliedOn,
+        resume:user.resumeUrl,
       });
     }
 
@@ -240,7 +241,6 @@ recruiterApp.get("/job-applications/:jobId", expressAsyncHandler(async (request,
         responsibilities: jobDetails.responsibilities,
         ctc: jobDetails.ctc,
         postedOn: jobDetails.postedOn,
-        // Add other job details as needed
       },
       userDetails,
     };
