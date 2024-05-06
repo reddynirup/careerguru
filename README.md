@@ -6,6 +6,13 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 [Click here to visit the live website](https://careerguru-1wow.onrender.com/)
 
+# Sample Credentials
+recruiter->email:nirup@gmail.com
+        password:nirup@2004
+user->email:haricharan@gmail.com
+   password:hari@2004
+
+
 ## Available Scripts
 
 In the project directory, you can run:
