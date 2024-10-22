@@ -6,11 +6,12 @@ Tech Stack: ReactJS, NodeJS, Express, MongoDB
 **Overview:**  
 Career Guru is a comprehensive job portal enabling seamless interaction between employers and job seekers. It allows employers to post jobs, review applications, and receive resumes, while job seekers can search and apply for jobs, manage their applications, and receive tailored recommendations.
 
-## Features:
-- **For Employers:** Post jobs, review applications, and receive resumes directly through the platform.
-- **For Job Seekers:** Search for jobs, apply directly, and manage applications.
-- **Recommendation Engine:** Tailors job suggestions based on the user’s skill set.
-- **Responsive Design:** Works across all devices to ensure accessibility for all users.
+### Features
+- **Employers**: Post jobs, review applications, manage resumes.
+- **Job Seekers**: Search and apply for jobs, upload and manage resumes.
+- **Tailored Recommendations**: Job seekers receive personalized job recommendations based on their skills.
+- **Responsive Design**: Optimized for both desktop and mobile.
+- **Cloud Storage**: Uses Cloudinary for storing images and documents.
 
 ## Installation and Setup:
 
