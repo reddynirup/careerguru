@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Navbar from '../Navbar'; // Import your Navbar component
+import Navbar from '../Navbar'; 
 import ApplicantCard from '../ApplicantCard';
 import NoApplicationsImage from "../../../assets/no-jobs-view.png";
-import './index.css'; // Import the CSS file
+import './index.css'; 
 import { toast } from 'react-toastify';
 
 const JobApplicationDetailsPage = () => {
@@ -25,7 +25,7 @@ const JobApplicationDetailsPage = () => {
         headers: {
           'Content-Type': 'application/json',
         }
-      };
+    };
     const response=await fetch(url,options);
     const data=await response.json();
     console.log(data);
@@ -41,7 +41,7 @@ const JobApplicationDetailsPage = () => {
     });   
     const updatedUserDetails = userDetails.map(user => {
       if (user.userId === userId) {
-        return { ...user, status: status }; // Update the status of the user
+        return { ...user, status: status }; 
       }
       return user;
     });

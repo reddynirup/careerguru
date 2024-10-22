@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import "./index.css";
 import EditJobModal from "../EditJobModal";
 
-function Job({ jobDetails, deleteJobById, updateJobById }) {
+function Job({ jobDetails, deleteJobById}) {
   const {
     _id,
     companyName,

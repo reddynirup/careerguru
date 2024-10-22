@@ -21,7 +21,7 @@ const RecruiterSchema = new Schema({
     },
     companyImageUrl:{
         type: String,
-        required: true
+        default:"https://img.icons8.com/?size=100&id=20318&format=png&color=000000"
     }
   });
   const Recruiter = mongoose.model('Recruiters', RecruiterSchema);

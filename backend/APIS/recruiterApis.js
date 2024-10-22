@@ -9,18 +9,17 @@ const Job=require("../models/Job");
 const User=require("../models/User");
 const AppliedJob=require("../models/AppliedJob");
 
-//register api(public api)
+//register api(public api) for recruiters
 recruiterApp.post("/register",expressAsyncHandler(async (request, response) => {
     const { username, email, password, companyName, companyImageUrl } = request.body;
-    // console.log("came to recruiter register api")
     try {
       // Check if the recruiter with the same email already exists
       const existingRecruiter = await Recruiter.findOne({ email });
 
       if (existingRecruiter) {
-        return response.status(200).send({ message: "Recruiter with the same email already exists" });
+        return response.status(409).send({ message: "Recruiter with the same email already exists" });
       }
-
+      
       // Hash the password
       const hashedPassword = await bcryptjs.hash(password, 6);
 
@@ -35,10 +34,10 @@ recruiterApp.post("/register",expressAsyncHandler(async (request, response) => {
 
       // Save the recruiter to the database
       await newRecruiter.save();
-
       // Send response
       response.status(201).send({ message: "Recruiter created successfully" });
     } catch (error) {
+      // console.log("error "+error.message);
       response.status(400).send({ message: error.message });
     }
   })
@@ -51,19 +50,18 @@ recruiterApp.post("/login", expressAsyncHandler(async (request, response) => {
   try {
     // Find the recruiter by email
     const recruiter = await Recruiter.findOne({ email });
-    // console.log(recruiter);
 
     // If recruiter doesn't exist, send an error message
     if (!recruiter) {
-      return response.status(201).send({ message: "Invalid email" });
+      return response.status(404).send({ message: "Invalid email" });
     }
 
     // Compare the passwords
     const isPasswordValid = await bcryptjs.compare(password, recruiter.password);
 
-    // If passwords don't match, send an error message
+    // If passwords don't match, send an error message  and send a 401 Unauthorized status
     if (!isPasswordValid) {
-      return response.status(202).send({ message: "Invalid password" });
+      return response.status(401).send({ message: "Invalid password" });
     }
 
     // Create JWT token
@@ -82,31 +80,14 @@ recruiterApp.post("/login", expressAsyncHandler(async (request, response) => {
       companyImageUrl:recruiter.companyImageUrl
     } });
   } catch (error) {
+    // server-side error  500 Internal Server Error status
     response.status(500).send({ message: "Internal Server Error" });
   }
 }));
 
-// Update job details
-recruiterApp.put("/updateJobDetails/:jobId", expressAsyncHandler(async (req, res) => {
-  try {
-    const jobId = req.params.jobId;
-    // Find the job by ID
-    const job = await Job.findByIdAndUpdate(jobId, req.body, { new: true });
-
-    // If job doesn't exist, return a 404 response
-    if (!job) {
-      return res.status(404).json({ message: "Job not found" });
-    }
-
-    // Send the updated job details in the response
-    res.status(200).json(job);
-  } catch (error) {
-    console.error("Error updating job details:", error);
-    res.status(500).json({ message: "Internal server error" });
-  }
-}));
-
 //PROTECTED APIS
+
+// api for posting a Job
 recruiterApp.post("/postjob",expressAsyncHandler(async (request, response) => {
     const {
       postedBy,
@@ -149,7 +130,29 @@ recruiterApp.post("/postjob",expressAsyncHandler(async (request, response) => {
   })  
 );
 
+// Update job details
+recruiterApp.put("/updateJobDetails/:jobId", expressAsyncHandler(async (req, res) => {
+  try {
+    const jobId = req.params.jobId;
 
+    // Find the job by ID
+    const job = await Job.findByIdAndUpdate(jobId, req.body, { new: true });
+
+    // If job doesn't exist, return a 404 response
+    if (!job) {
+      return res.status(404).json({ message: "Job not found" });
+    }
+
+    // Send the updated job details in the response
+    res.status(200).json(job);
+  } catch (error) {
+    //Error updating job details!!
+    res.status(500).json({ message: "Internal server error" });
+  }
+}));
+
+
+//api to get all jobs posted by a recruiter
 recruiterApp.get("/myjobs/:id",expressAsyncHandler(async (request, response) => {
     const recruiterId = request.params.id;
     const sortBy = request.query.sortBy || "latest";
@@ -172,7 +175,7 @@ recruiterApp.get("/myjobs/:id",expressAsyncHandler(async (request, response) => 
   })
 );
 
-
+//api to delete a job posted by recruiter
 recruiterApp.delete("/deletejob/:jobId",expressAsyncHandler(async (request,response)=>{
   const jobId = request.params.jobId;
 
@@ -192,7 +195,7 @@ recruiterApp.delete("/deletejob/:jobId",expressAsyncHandler(async (request,respo
   }
 }))
 
-
+//api for getting all applications received for  a specific job
 recruiterApp.get("/job-applications/:jobId", expressAsyncHandler(async (request, response) => {
   const jobId = request.params.jobId;
 
@@ -253,6 +256,7 @@ recruiterApp.get("/job-applications/:jobId", expressAsyncHandler(async (request,
 }));
 
 
+//api for updating the application status 
 recruiterApp.put("/update-application-status", expressAsyncHandler(async (request, response) => {
   const { userId, jobId, status } = request.body;
   // console.log("request came");

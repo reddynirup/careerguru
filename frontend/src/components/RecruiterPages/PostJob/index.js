@@ -87,8 +87,9 @@ function PostJob() {
             <select
               id="jobType"
               {...register('jobType', { required: '*Job Type is required' })}
+              defaultValue={""}
             >
-              <option value="">Select Job Type</option>
+              <option value="" disabled>Select Job Type</option>
               <option value="Full Time">Full Time</option>
               <option value="Internship">Internship</option>
             </select>

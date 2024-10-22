@@ -1,4 +1,3 @@
-// AllJobs.js
 import React, { useState, useEffect } from 'react';
 import UserNavbar from '../UserNavbar';
 import FilterAndSearch from '../FilterAndSearch';

@@ -32,13 +32,13 @@ function UserRegister() {
       const userRegisterUrl="/user-api/register";
       try {
         const response = await fetch(userRegisterUrl, options);
-        console.log(response);
+        // console.log(response);
         if (response.status===200) {
           throw new Error("User with the same email already exists.");
         }
       
         const data = await response.json();
-        console.log(data);
+        // console.log(data);
         toast.success('Registered successfully!', {
             position: "top-center",
             autoClose: 2000,

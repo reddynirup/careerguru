@@ -1,4 +1,3 @@
-// FilterAndSearch.js
 import React from 'react';
 import { useState } from 'react';
 import "./index.css"
@@ -9,7 +8,7 @@ function FilterAndSearch({onApplyFilters,onClearFilters}) {
     const [ctc,setCtc]=useState("");
     const [sortByDate,setSortByDate] =useState("");
 
-    const handleSubmit = (e) => {
+    const handleSubmitFilters = (e) => {
         e.preventDefault();
         const filtersSearch={
             search: searchValue,
@@ -50,7 +49,7 @@ function FilterAndSearch({onApplyFilters,onClearFilters}) {
         setSortByDate(event.target.value);
     }
     return (
-        <form className="filter-and-search" onSubmit={handleSubmit}>
+        <form className="filter-and-search" onSubmit={handleSubmitFilters}>
             <div className='filter-container'>
                 <label className='filter-label'>Serach by Position</label>
                 <input
@@ -59,7 +58,7 @@ function FilterAndSearch({onApplyFilters,onClearFilters}) {
                     value={searchValue}
                     placeholder="Search by Position"
                     onChange={onChangeSearchValue}
-                    className='filter-input'
+                    className='filter-input filter-input-text'
                 />
             </div>
             <div className='filter-container'>
@@ -78,7 +77,7 @@ function FilterAndSearch({onApplyFilters,onClearFilters}) {
                     value={ctc}
                     onChange={onChangeCtc}
                     placeholder="Search by CTC"
-                    className='filter-input'
+                    className='filter-input filter-input-text'
                     disabled
                 />
             </div>

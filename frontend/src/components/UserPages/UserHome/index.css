@@ -1,4 +1,4 @@
-.jobseeker-home-page {
+/* .jobseeker-home-page {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -47,5 +47,204 @@
     .jobseeker-home-page-container {
         margin-top: 20px;
         padding: 15px;
+    }
+} */
+
+
+/* Hero Section */
+.hero-section {
+    background-image: url("./background.jpg");
+    /* Example background image */
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #102819;
+}
+
+.hero-heading {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero-subtext {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+}
+
+.cta-button {
+    background-color: #007bff;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    display: inline-block;
+}
+
+/* Why Choose Section */
+.why-choose-section {
+    padding: 60px 20px;
+    background-color: #f4f4f4;
+    text-align: center;
+}
+
+.section-heading {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.why-choose-content p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.features-list {
+    list-style: none;
+    padding: 0;
+}
+
+.features-list li {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 30px;
+}
+
+.features-list img {
+    width: 50px;
+    margin-right: 15px;
+}
+
+.features-list strong {
+    font-size: 1.1rem;
+}
+
+/* Get Started Section */
+.get-started-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.get-started-section p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+}
+
+.cta-button {
+    background-color: #28a745;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 5px;
+}
+
+/* Footer */
+.footer {
+    background-color: #343a40;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+
+/* Responsive Styles */
+
+/* Small devices (landscape phones, 576px and down) */
+@media (max-width: 576px) {
+    .hero-heading {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtext {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        padding: 12px 24px;
+        font-size: 1rem;
+    }
+
+    .features-list li {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .features-list img {
+        margin-bottom: 10px;
+    }
+
+    .section-heading {
+        font-size: 2rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and down) */
+@media (max-width: 768px) {
+    .hero-heading {
+        font-size: 2.5rem;
+    }
+
+    .hero-subtext {
+        font-size: 1.2rem;
+    }
+
+    .cta-button {
+        padding: 13px 26px;
+        font-size: 1.1rem;
+    }
+
+    .features-list {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .features-list li {
+        justify-content: center;
+    }
+
+    .features-list img {
+        margin-bottom: 10px;
+    }
+
+    .section-heading {
+        font-size: 2.2rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .hero-heading {
+        font-size: 3.5rem;
+    }
+
+    .hero-subtext {
+        font-size: 1.8rem;
+    }
+
+    .cta-button {
+        padding: 16px 32px;
+        font-size: 1.3rem;
+    }
+
+    .features-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-gap: 20px;
+    }
+
+    .features-list li {
+        justify-content: start;
+        flex-direction: row;
+    }
+
+    .features-list img {
+        margin-bottom: 0;
     }
 }

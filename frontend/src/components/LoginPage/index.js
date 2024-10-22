@@ -2,7 +2,7 @@ import React, { useState,useEffect} from "react";
 import { useForm } from "react-hook-form";
 import { Link ,useNavigate} from "react-router-dom";
 import Cookies from 'js-cookie';
-  import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import logo from "../../assets/logo.png";
 import LoginImage from "../../assets/loginpageimagee.jpg";
@@ -28,7 +28,7 @@ function Login() {
 
   const onSubmit = async  (dat) => {
     const user=dat;
-    console.log(user);
+    // console.log(user);
     if(user.userType==="JobSeeker"){
       const userData={
         username:user.username,
@@ -51,7 +51,7 @@ function Login() {
         }
         if(response.status===200){
           const data = await response.json();
-          console.log(data);
+          // console.log(data);
           localStorage.setItem('userInfo', JSON.stringify(data.user));
           Cookies.set('user_jwt_token', data.token, { expires: 30 });
           toast.success('Login successfully!', {
@@ -67,10 +67,10 @@ function Login() {
           navigate("/user/home",{replace:true})
           setErrorMsg("");
         }
-        else if(response.status===201){
+        else if(response.status===409){
           throw new Error("User with this email does not exist!");
         }
-        else if(response.status===202){
+        else if(response.status===401){
           throw new Error("Invalid password!!");
         }
         else{
@@ -159,6 +159,7 @@ function Login() {
   return (
     <div className="login-container">
       <div className="login-page-content">
+        {/* this image container is for large devices */}
         <div className="login-page-image-container">
           <img
             alt="job"
@@ -166,11 +167,13 @@ function Login() {
             src={LoginImage}
           />
         </div>
+
         <div className="login-form-container">
           <form className="login-form" onSubmit={handleSubmit(onSubmit)}>
             <div className="website-logo-bar">
               <img className="website-logo" src={logo} alt="app-logo" />
             </div>
+            
             <div className="login-input-container">
               <label className="login-label" htmlFor="email">
                 EMAIL
@@ -184,6 +187,7 @@ function Login() {
               />
               {errors.email && <p className="error-message">{errors.email.message}</p>}
             </div>
+
             <div className="login-input-container">
               <label className="login-label" htmlFor="password">
                 PASSWORD
@@ -197,6 +201,7 @@ function Login() {
               />
               {errors.password && <p className="error-message">{errors.password.message}</p>}
             </div>
+
             <div className="login-input-container ">
               <label className="user-register-label" htmlFor="user-type">
                 USER-TYPE
@@ -228,6 +233,7 @@ function Login() {
                 </Link>
               </p>
             </div>
+
             {errorMsg!=="" && <p className="errormessage">{errorMsg}</p>}
           </form>
         </div>

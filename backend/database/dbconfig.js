@@ -1,22 +1,46 @@
 const mongoose = require("mongoose");
 
+// Function to establish connection to MongoDB database
 function connectToMongo() {
+    
     mongoose.set("strictQuery", true);
-    mongoose.connect(process.env.MONGO_URI, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        dbName: "careerguru"
+
+    // Connect to MongoDB using provided URI and configuration options
+    mongoose.connect(process.env.MONGO_URI, {     
+        dbName: "careerguru"            
     });
 
+    // Get the default Mongoose connection
     const db = mongoose.connection;
 
+    // Event listener for connection errors
     db.on("error", console.error.bind(console, "connection error: "));
+
+    // Event listener for successful database connection which will execute for once on successful connection
     db.once("open", function () {
         console.log("Database connected successfully!!\nHappy coding");
     });
 }
 
 module.exports = connectToMongo;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // //this is for connecting to mongodb database

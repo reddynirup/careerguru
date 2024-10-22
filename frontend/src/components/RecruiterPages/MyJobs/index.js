@@ -11,12 +11,10 @@ function MyJobs() {
   const [loading, setLoading] = useState(true);
   const recruiterId = JSON.parse(localStorage.getItem("recruiterInfo")).recruiterId;
 
-  
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        console.log("asdadas");
         setLoading(true);
         const options = {
           method: "GET",
@@ -50,7 +48,7 @@ function MyJobs() {
 
 
     setJobs(prevJobs => prevJobs.filter(job => job._id !== jobId));
-    // fetchData();
+   
   };
 
   return (

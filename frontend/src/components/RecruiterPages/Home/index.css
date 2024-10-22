@@ -1,4 +1,201 @@
-.recruiter-home-page{
+/* Main Page Styles */
+.recruiter-home-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.recruiter-home-page-container {
+  width: 80%;
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 40px 20px;
+  margin: 20px 0;
+}
+
+/* Hero Section */
+.hero-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.text-content {
+  max-width: 50%;
+  color:rgb(6, 7, 16);
+}
+
+.hero-image {
+  width: 250px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.hero-section h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+/* Why Choose Section */
+.why-choose-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.why-choose-section .content-grid {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.features-image {
+  width: 200px;
+  height: 200px;
+  border-radius: 8px;
+}
+
+.why-choose-section p {
+  font-size: 18px;
+  max-width: 50%;
+  margin: 20px;
+}
+
+/* Key Features */
+.key-features-section {
+  margin-bottom: 50px;
+}
+
+.key-features-section ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.key-features-section li {
+  flex-basis: 45%;
+  background-color: #f0f0f0;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.testimonials-grid {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.testimonials-grid blockquote {
+  flex-basis: 45%;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-left: 5px solid #4caf50;
+  border-radius: 8px;
+}
+
+.testimonials-grid cite {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-style: italic;
+}
+
+/* Call to Action Section */
+.call-to-action-section {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.call-to-action-section p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #45a049;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 900px) {
+  .hero-section {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-image,
+  .text-content {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .why-choose-section .content-grid {
+    flex-direction: column;
+  }
+
+  .features-image,
+  .why-choose-section p {
+    max-width: 100%;
+  }
+
+  .testimonials-grid blockquote,
+  .key-features-section li {
+    flex-basis: 100%;
+  }
+
+  .cta-button {
+    width: 100%;
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .navbar ul {
+    flex-direction: column;
+  }
+
+  .navbar ul li {
+    margin-bottom: 10px;
+  }
+
+  .recruiter-home-page-container {
+    width: 90%;
+    padding: 20px;
+  }
+}
+
+
+/* .recruiter-home-page{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,4 +243,4 @@
     font-size: 16px;
     line-height: 1.5;
   }
-  
+   */
