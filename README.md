@@ -23,7 +23,7 @@ git clone https://github.com/reddynirup/careerguru.git
 
 ---
 
-## 2. Backend Setup:
+### 2. Backend Setup:
 
 After cloning the repository, open the folder and install the dependencies:
 ---
@@ -38,7 +38,7 @@ npm start
 ---
 
 
-## 3. Frontend Setup:
+### 3. Frontend Setup:
 Move to the frontend folder, install the dependencies, and run the frontend:
 
 ---
@@ -48,7 +48,7 @@ npm install
 npm start
 
 ---
-## 4. Environment Variables: to run in the local system
+### 4. Environment Variables: to run in the local system
 Create a .env file in the main folder and add the following fields:
 PORT=5000
 MONGO_URI=your_mongodb_uri
