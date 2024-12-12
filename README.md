@@ -1,6 +1,5 @@
 # Career Guru
-
-GitHub Link: [https://github.com/reddynirup/careerguru](https://github.com/reddynirup/careerguru)  
+ 
 Tech Stack: ReactJS, NodeJS, Express, MongoDB  
 
 **Overview:**  
